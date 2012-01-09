@@ -38,12 +38,13 @@
 		}
 
 		return function () {
-			var self = this;
-
+			var self = this,
+				args = arguments;
+				
 			// We make a note of throttling and only run
 			// handler when not throttling
 			if (name === 'throttle' && ! throttle) {
-				handler.apply(self, arguments);
+				handler.apply(self, args);
 				throttle = setTimeout(function () {
 					throttle = null;
 				}, delay);
@@ -56,7 +57,7 @@
 
 			// Set a fresh timer
 			timer = setTimeout(function () {
-				handler.apply(self, arguments);
+				handler.apply(self, args);
 			}, delay);
 		};
 	}
