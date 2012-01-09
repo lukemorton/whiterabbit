@@ -28,19 +28,22 @@
 	else this.WhiteRabbit = definition()
 }(function () {
 	// The bulk work is done here
-	function hop(name, handler, delay) {
-		var self = this,
-			throttle,
+	function hop(name, delay, handler) {
+		var throttle,
 			timer;
 
-		// Get delay
-		delay = delay || 1000;
+		if ( ! handler) {
+			handler = delay;
+			delay = 1000;
+		}
 
 		return function () {
+			var self = this;
+
 			// We make a note of throttling and only run
 			// handler when not throttling
 			if (name === 'throttle' && ! throttle) {
-				handler.call(self, e);
+				handler.apply(self, arguments);
 				throttle = setTimeout(function () {
 					throttle = null;
 				}, delay);
@@ -53,7 +56,7 @@
 
 			// Set a fresh timer
 			timer = setTimeout(function () {
-				handler.call(self, e);
+				handler.apply(self, arguments);
 			}, delay);
 		};
 	}
@@ -61,10 +64,10 @@
 	// Return the two methods
 	return {
 		stop : function (delay, callback) {
-			return hop('stop', callback, delay);
+			return hop('stop', delay, callback);
 		},
 		throttle : function (delay, callback) {
-			return hop('throttle', callback);
+			return hop('throttle', delay, callback);
 		}
 	};
 });

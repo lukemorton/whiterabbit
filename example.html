@@ -10,19 +10,19 @@
             <input id="throttle" />
             <span id="throttle-result"></span>
         </p>
-        <p>
+        <p id="stop">
             <label for="stop">On event stop:</label>
-            <input id="stop" />
+            <input />
             <span id="stop-result"></span>
         </p>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
         <script src="whiterabbit.js"></script>
         <script>
             $(function () {
                 $('#throttle').on('keydown', WhiteRabbit.throttle(function () {
                     $('#throttle-result').html($(this).val());
                 }));
-                $('#stop').bindStop('keydown', WhiteRabbit.stop(function () {
+                $('#stop').on('keydown', 'input', WhiteRabbit.stop(function () {
                     $('#stop-result').html($(this).val());
                 }));
             });
