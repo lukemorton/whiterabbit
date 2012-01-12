@@ -1,0 +1,17 @@
+{
+  "author": "Luke Morton <lukemorton.designs@gmail.com> (http://lukemorton.co.uk)",
+  "name": "WhiteRabbit",
+  "description": "Delayed callback wrapper. Useful for throttling callbacks.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/DrPheltRight/whiterabbit",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DrPheltRight/whiterabbit.git"
+  },
+  "main": "lib/whiterabbit.js",
+  "engines": {
+    "node": "~0.6.3"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
